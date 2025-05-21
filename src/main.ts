@@ -2,53 +2,56 @@ import { app, BrowserWindow } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
+// 在 Windows 上安装/卸载时处理创建/删除快捷方式。
 if (started) {
-  app.quit();
+    app.quit();
 }
 
 const createWindow = () => {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-    },
-  });
+    // 创建浏览器窗口。
+    const mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
+        },
+    });
 
-  // and load the index.html of the app.
-  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
-  } else {
-    mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
-  }
+    // 加载应用的 index.html。
+    if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+        mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+    } else {
+        mainWindow.loadFile(
+            path.join(
+                __dirname,
+                `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`
+            )
+        );
+    }
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+    // 打开开发者工具。
+    mainWindow.webContents.openDevTools();
 };
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
+// 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法。
+// 某些 API 只能在此事件发生后使用。
 app.on('ready', createWindow);
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+// 当所有窗口关闭时退出应用，在 macOS 上除外。在 macOS 上，应用及其菜单栏
+// 通常会保持活动状态，直到用户使用 Cmd + Q 明确退出。
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
 });
 
 app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+    // 在 macOS 上，当点击 dock 图标且没有其他窗口打开时，
+    // 通常会在应用程序中重新创建一个窗口。
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
+    }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+// 在此文件中，你可以包含应用程序特定的主进程代码。
+// 你也可以将它们放在单独的文件中并在这里导入。

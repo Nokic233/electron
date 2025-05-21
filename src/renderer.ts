@@ -1,18 +1,18 @@
 /**
- * This file will automatically be loaded by vite and run in the "renderer" context.
- * To learn more about the differences between the "main" and the "renderer" context in
- * Electron, visit:
+ * 此文件将被 vite 自动加载并在 "renderer" 上下文中运行。
+ * 要了解更多关于 Electron 中 "main" 和 "renderer" 上下文的区别，
+ * 请访问：
  *
  * https://electronjs.org/docs/tutorial/process-model
  *
- * By default, Node.js integration in this file is disabled. When enabling Node.js integration
- * in a renderer process, please be aware of potential security implications. You can read
- * more about security risks here:
+ * 默认情况下，此文件中的 Node.js 集成是禁用的。在 renderer 进程中
+ * 启用 Node.js 集成时，请注意潜在的安全隐患。您可以在这里阅读更多
+ * 关于安全风险的信息：
  *
  * https://electronjs.org/docs/tutorial/security
  *
- * To enable Node.js integration in this file, open up `main.ts` and enable the `nodeIntegration`
- * flag:
+ * 要在此文件中启用 Node.js 集成，请打开 `main.ts` 并启用
+ * `nodeIntegration` 标志：
  *
  * ```
  *  // Create the browser window.
@@ -28,4 +28,6 @@
 
 import './index.css';
 
-console.log('👋 This message is being logged by "renderer.ts", included via Vite');
+console.log(
+    '👋 This message is being logged by "renderer.ts", included via Vite'
+);
