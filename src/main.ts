@@ -35,7 +35,9 @@ const createWindow = () => {
 
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法。
 // 某些 API 只能在此事件发生后使用。
-app.on('ready', createWindow);
+app.whenReady().then(() => {
+    createWindow();
+});
 
 // 当所有窗口关闭时退出应用，在 macOS 上除外。在 macOS 上，应用及其菜单栏
 // 通常会保持活动状态，直到用户使用 Cmd + Q 明确退出。
