@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 
@@ -36,6 +36,7 @@ const createWindow = () => {
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法。
 // 某些 API 只能在此事件发生后使用。
 app.whenReady().then(() => {
+    ipcMain.handle('ping', () => 'pong');
     createWindow();
 });
 

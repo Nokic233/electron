@@ -7,6 +7,7 @@ declare global {
             chrome: () => string;
             node: () => string;
             electron: () => string;
+            ping: () => Promise<string>;
         };
     }
 }
