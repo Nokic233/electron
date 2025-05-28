@@ -35,8 +35,15 @@ information.innerText = `This app is using Chrome (v${window.versions.chrome()})
 const btn = document.getElementById('btn');
 btn.addEventListener('click', async () => {
     const title = document.getElementById('title') as HTMLInputElement;
-    console.log(111, title.value);
     await window.electronAPI.setTitle(title.value);
+});
+
+const btnForFile = document.getElementById('btnForFile');
+const filePathElement = document.getElementById('filePath');
+
+btnForFile.addEventListener('click', async () => {
+    const filePath = await window.electronAPI.openFile();
+    filePathElement.innerText = filePath;
 });
 
 const func = async () => {

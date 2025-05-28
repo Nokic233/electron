@@ -12,4 +12,5 @@ export interface Versions {
 }
 export interface ElectronAPI {
     setTitle: (title: string) => void;
+    openFile: () => Promise<string>;
 }

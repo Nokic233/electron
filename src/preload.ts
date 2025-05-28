@@ -7,9 +7,9 @@ contextBridge.exposeInMainWorld('versions', {
     chrome: () => process.versions.chrome,
     electron: () => process.versions.electron,
     ping: () => ipcRenderer.invoke('ping'),
-    setTitle: (title: string) => ipcRenderer.send('set-title', title),
 });
 
 contextBridge.exposeInMainWorld('electronAPI', {
     setTitle: (title: string) => ipcRenderer.send('set-title', title),
+    openFile: () => ipcRenderer.invoke('dialog:openFile'),
 });
