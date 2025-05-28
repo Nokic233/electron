@@ -32,6 +32,13 @@ console.log('👋 This message is being logged by "renderer.ts", included via Vi
 const information = document.getElementById('info');
 information.innerText = `This app is using Chrome (v${window.versions.chrome()}), Node.js (v${window.versions.node()}), and Electron (v${window.versions.electron()})`;
 
+const btn = document.getElementById('btn');
+btn.addEventListener('click', async () => {
+    const title = document.getElementById('title') as HTMLInputElement;
+    console.log(111, title.value);
+    await window.electronAPI.setTitle(title.value);
+});
+
 const func = async () => {
     const response = await window.versions.ping();
     console.log(response); // prints out 'pong'

@@ -27,13 +27,21 @@ const createWindow = () => {
     }
 
     // 打开开发者工具。
-    mainWindow.webContents.openDevTools();
+    if (!app.isPackaged) {
+        mainWindow.webContents.openDevTools();
+    }
 };
 
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法。
 // 某些 API 只能在此事件发生后使用。
 app.whenReady().then(() => {
     ipcMain.handle('ping', () => 'pong');
+    ipcMain.on('set-title', (event, title) => {
+        console.log(event, title);
+        const webContents = event.sender;
+        const win = BrowserWindow.fromWebContents(webContents);
+        win.setTitle(title);
+    });
     createWindow();
 });
 

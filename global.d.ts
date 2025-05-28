@@ -1,13 +1,15 @@
-export {};
-
-// 为 window 对象声明 versions 接口
 declare global {
     interface Window {
-        versions: {
-            chrome: () => string;
-            node: () => string;
-            electron: () => string;
-            ping: () => Promise<string>;
-        };
+        versions: Versions;
+        electronAPI: ElectronAPI;
     }
+}
+export interface Versions {
+    chrome: () => string;
+    node: () => string;
+    electron: () => string;
+    ping: () => Promise<string>;
+}
+export interface ElectronAPI {
+    setTitle: (title: string) => void;
 }

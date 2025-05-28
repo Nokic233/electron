@@ -1,13 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
         <meta charset="UTF-8" />
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+        />
         <title>Hello World!</title>
     </head>
     <body>
         <h1>💖 Hello World!</h1>
         <p>Welcome to your Electron application.</p>
         <p id="info"></p>
+        Title: <input id="title" />
+        <button id="btn" type="button">Set</button>
         <script type="module" src="/src/renderer.ts"></script>
     </body>
 </html>
