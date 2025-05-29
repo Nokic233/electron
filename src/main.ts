@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, Menu } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 
@@ -16,6 +16,23 @@ const createWindow = () => {
             preload: path.join(__dirname, 'preload.js'),
         },
     });
+
+    const menu = Menu.buildFromTemplate([
+        {
+            label: app.name,
+            submenu: [
+                {
+                    click: () => mainWindow.webContents.send('update-counter', 1),
+                    label: 'Increment',
+                },
+                {
+                    click: () => mainWindow.webContents.send('update-counter', -1),
+                    label: 'Decrement',
+                },
+            ],
+        },
+    ]);
+    Menu.setApplicationMenu(menu);
 
     // 加载应用的 index.html。
     if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
@@ -50,6 +67,9 @@ app.whenReady().then(() => {
         win.setTitle(title);
     });
     ipcMain.handle('dialog:openFile', handleFileOpen);
+    ipcMain.on('counter-value', (_event, value) => {
+        console.log(value);
+    });
     createWindow();
 });
 
