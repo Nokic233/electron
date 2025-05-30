@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain, Menu } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, Menu, nativeTheme } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 
@@ -69,6 +69,19 @@ app.whenReady().then(() => {
     ipcMain.handle('dialog:openFile', handleFileOpen);
     ipcMain.on('counter-value', (_event, value) => {
         console.log(value);
+    });
+
+    ipcMain.handle('dark-mode:toggle', () => {
+        if (nativeTheme.shouldUseDarkColors) {
+            nativeTheme.themeSource = 'light';
+        } else {
+            nativeTheme.themeSource = 'dark';
+        }
+        return nativeTheme.shouldUseDarkColors;
+    });
+
+    ipcMain.handle('dark-mode:system', () => {
+        nativeTheme.themeSource = 'system';
     });
     createWindow();
 });

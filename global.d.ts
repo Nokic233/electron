@@ -2,6 +2,7 @@ declare global {
     interface Window {
         versions: Versions;
         electronAPI: ElectronAPI;
+        darkMode: DarkMode;
     }
 }
 export interface Versions {
@@ -15,4 +16,11 @@ export interface ElectronAPI {
     openFile: () => Promise<string>;
     onUpdateCounter: (callback: (value: number) => void) => void;
     counterValue: (value: number) => void;
+    toggle: () => Promise<boolean>;
+    system: () => Promise<void>;
+}
+
+export interface DarkMode {
+    toggle: () => Promise<boolean>;
+    system: () => Promise<void>;
 }
