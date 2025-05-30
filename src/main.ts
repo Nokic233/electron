@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain, Menu, nativeTheme } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, Menu, nativeTheme, globalShortcut } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 
@@ -23,10 +23,12 @@ const createWindow = () => {
             submenu: [
                 {
                     click: () => mainWindow.webContents.send('update-counter', 1),
+                    accelerator: process.platform === 'darwin' ? 'Alt+Cmd+I' : 'Alt+Shift+I',
                     label: 'Increment',
                 },
                 {
                     click: () => mainWindow.webContents.send('update-counter', -1),
+                    accelerator: process.platform === 'darwin' ? 'Alt+Cmd+O' : 'Alt+Shift+O',
                     label: 'Decrement',
                 },
             ],
@@ -59,6 +61,11 @@ async function handleFileOpen() {
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法。
 // 某些 API 只能在此事件发生后使用。
 app.whenReady().then(() => {
+    // 全局快捷键
+    globalShortcut.register('Alt+CommandOrControl+I', () => {
+        console.log('Electron loves global shortcuts!');
+    });
+
     ipcMain.handle('ping', () => 'pong');
     ipcMain.on('set-title', (event, title) => {
         console.log(event, title);
