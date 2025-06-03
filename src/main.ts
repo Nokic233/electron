@@ -25,6 +25,10 @@ const createWindow = () => {
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         },
+        // remove the default titlebar
+        titleBarStyle: 'hidden',
+        // expose window controls in Windows/Linux
+        ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
     });
 
     const menu = Menu.buildFromTemplate([
