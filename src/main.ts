@@ -29,6 +29,8 @@ const createWindow = () => {
         titleBarStyle: 'hidden',
         // expose window controls in Windows/Linux
         ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
+        frame: false, // 无边框窗口
+        // transparent: true, // 透明窗口
     });
 
     const menu = Menu.buildFromTemplate([
