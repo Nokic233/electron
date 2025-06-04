@@ -18,6 +18,19 @@ const config: ForgeConfig = {
         new MakerRpm({}),
         new MakerDeb({}),
     ],
+    publishers: [
+        {
+            name: '@electron-forge/publisher-github',
+            config: {
+                repository: {
+                    owner: 'Nokic233',
+                    name: 'electron',
+                },
+                prerelease: false,
+                draft: true,
+            },
+        },
+    ],
     plugins: [
         new VitePlugin({
             // `build` 可以指定多个入口构建，可以是主进程、预加载脚本、工作进程等
