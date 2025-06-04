@@ -11,11 +11,15 @@ import {
 } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
+import { updateElectronApp } from 'update-electron-app';
 
 // 在 Windows 上安装/卸载时处理创建/删除快捷方式。
 if (started) {
     app.quit();
 }
+
+// 自动更新从 GitHub 获取
+updateElectronApp();
 
 const createWindow = () => {
     // 创建浏览器窗口。
