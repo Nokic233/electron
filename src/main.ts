@@ -116,7 +116,6 @@ app.whenReady().then(() => {
      */
     initGlobalShortcut();
 
-    ipcMain.handle('ping', () => 'pong');
     ipcMain.on('set-title', (event, title) => {
         console.log(event, title);
         const webContents = event.sender;
