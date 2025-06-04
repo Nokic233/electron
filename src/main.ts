@@ -66,9 +66,11 @@ const createWindow = () => {
     }
 
     // 打开开发者工具。
-    if (!app.isPackaged) {
-        mainWindow.webContents.openDevTools();
-    }
+    mainWindow.webContents.once('did-finish-load', () => {
+        if (!app.isPackaged) {
+            mainWindow.webContents.openDevTools();
+        }
+    });
 };
 
 async function handleFileOpen() {
