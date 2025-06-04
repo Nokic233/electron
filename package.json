@@ -14,7 +14,8 @@
         "make": "electron-forge make",
         "publish": "electron-forge publish",
         "lint": "eslint --ext .ts,.tsx .",
-        "format": "prettier --write \"**/*.{js,ts,tsx,json,css,md}\""
+        "format": "prettier --write \"**/*.{js,ts,tsx,json,css,md}\"",
+        "release": "bash scripts/release.sh"
     },
     "keywords": [],
     "author": {
