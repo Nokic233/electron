@@ -91,15 +91,28 @@ npm run publish
 
 ```
 ├── src/                  # 源代码目录
+│   ├── App.vue           # Vue主组件
 │   ├── main.ts           # 主进程入口文件
 │   ├── preload.ts        # 预加载脚本
 │   ├── renderer.ts       # 渲染进程脚本
 │   └── index.css         # 样式文件
+├── .github/              # GitHub配置目录
+│   └── workflows/        # GitHub Actions工作流
+│       └── main.yml      # 主工作流配置
+├── scripts/              # 脚本目录
+│   └── release.sh        # 发布脚本
 ├── index.html            # 主HTML文件
 ├── forge.config.ts       # Electron Forge配置
 ├── vite.main.config.ts   # 主进程Vite配置
 ├── vite.preload.config.ts # 预加载脚本Vite配置
 ├── vite.renderer.config.ts # 渲染进程Vite配置
+├── tsconfig.json         # TypeScript配置
+├── .eslintrc.json        # ESLint配置
+├── .prettierrc.json      # Prettier配置
+├── .npmrc                # NPM配置
+├── .gitignore            # Git忽略文件配置
+├── global.d.ts           # 全局类型声明
+├── forge.env.d.ts        # Forge环境类型声明
 └── package.json          # 项目配置和依赖
 ```
 

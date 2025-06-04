@@ -27,7 +27,7 @@ const config: ForgeConfig = {
                     name: 'electron',
                 },
                 prerelease: false,
-                draft: true,
+                draft: false,
             },
         },
     ],
