@@ -6,4 +6,4 @@ TAG="v$VERSION"
 
 # 添加、提交、打标签并推送
 git tag $TAG
-git push origin main --follow-tags
+git push origin --tags
