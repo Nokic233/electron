@@ -28,8 +28,6 @@ const config: ForgeConfig = {
                         allowToChangeInstallationDirectory: true,
                         // 默认为当前用户安装，而不是所有用户
                         perMachine: false,
-                        // 允许请求提升权限（如果需要）
-                        allowElevation: true,
                     };
                 },
             },
