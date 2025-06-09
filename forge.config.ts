@@ -8,6 +8,7 @@ import { PublisherGithub } from '@electron-forge/publisher-github';
 import { VitePlugin } from '@electron-forge/plugin-vite';
 import { FusesPlugin } from '@electron-forge/plugin-fuses';
 import { FuseV1Options, FuseVersion } from '@electron/fuses';
+import MakerNSIS from '@felixrieseberg/electron-forge-maker-nsis';
 
 const config: ForgeConfig = {
     packagerConfig: {
@@ -16,6 +17,21 @@ const config: ForgeConfig = {
     rebuildConfig: {},
     makers: [
         new MakerSquirrel({}),
+        new MakerNSIS({
+            // 这里可以添加 NSIS 特定的配置
+            getAppBuilderConfig: async () => {
+                return {
+                    // 禁用一键安装，显示安装向导界面
+                    oneClick: false,
+                    // 允许用户更改安装目录
+                    allowToChangeInstallationDirectory: true,
+                    // 默认为当前用户安装，而不是所有用户
+                    perMachine: false,
+                    // 允许请求提升权限（如果需要）
+                    allowElevation: true,
+                };
+            },
+        }),
         new MakerZIP({}),
         new MakerDMG({}),
         new MakerRpm({}),

@@ -1,7 +1,7 @@
 {
     "name": "electron",
     "productName": "electron",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "description": "My Electron application description",
     "repository": {
         "type": "git",
@@ -35,6 +35,7 @@
         "@electron-forge/plugin-vite": "^7.8.1",
         "@electron-forge/publisher-github": "^7.8.1",
         "@electron/fuses": "^1.8.0",
+        "@felixrieseberg/electron-forge-maker-nsis": "^7.2.0",
         "@types/electron-squirrel-startup": "^1.0.2",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
