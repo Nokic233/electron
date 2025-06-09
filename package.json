@@ -40,7 +40,6 @@
         "@typescript-eslint/parser": "^5.62.0",
         "@vitejs/plugin-vue": "^5.2.4",
         "electron": "36.3.2",
-        "electron-forge-maker-nsis": "^26.0.12",
         "eslint": "^8.57.1",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-import": "^2.31.0",

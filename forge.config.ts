@@ -16,36 +16,6 @@ const config: ForgeConfig = {
     rebuildConfig: {},
     makers: [
         new MakerSquirrel({}),
-        {
-            name: 'electron-forge-maker-nsis',
-            config: {
-                // ↓ 传递给 electron-builder 的 NSIS 配置选项
-                // codesigning: {
-                //     // 可选，用于代码签名
-                //     // certificateFile: "路径/to/cert.pfx",
-                //     // certificatePassword: process.env.CERT_PASS,
-                // },
-                // updater: {
-                //     // 可选，支持通过 electron-updater 实现自动更新
-                //     // url: "https://your-cdn.com/updates",
-                //     // publisherName: "你的公司名",
-                // },
-                getAdditionalConfig: () => ({
-                    // 自定义输出文件名
-                    // artifactName: '${productName}Setup${version}.${ext}',
-                    // 启用一键安装
-                    oneClick: false,
-                    // 为全局安装（所有用户）
-                    perMachine: false,
-                    // 允许用户自定义安装目录
-                    allowToChangeInstallationDirectory: true,
-                    // // 显示语言选择界面
-                    // displayLanguageSelector: true,
-                    // // 支持的语言列表
-                    // installerLanguages: ['en_US', 'zh_CN'],
-                }),
-            },
-        },
         new MakerZIP({}),
         new MakerDMG({}),
         new MakerRpm({}),
@@ -59,6 +29,7 @@ const config: ForgeConfig = {
             },
             prerelease: false,
             draft: false,
+            generateReleaseNotes: true,
         }),
     ],
     plugins: [
