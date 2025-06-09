@@ -8,7 +8,6 @@ import { PublisherGithub } from '@electron-forge/publisher-github';
 import { VitePlugin } from '@electron-forge/plugin-vite';
 import { FusesPlugin } from '@electron-forge/plugin-fuses';
 import { FuseV1Options, FuseVersion } from '@electron/fuses';
-import moduleName from 'electron-forge-maker-nsis';
 
 const config: ForgeConfig = {
     packagerConfig: {
@@ -21,19 +20,19 @@ const config: ForgeConfig = {
             name: 'electron-forge-maker-nsis',
             config: {
                 // ↓ 传递给 electron-builder 的 NSIS 配置选项
-                codesigning: {
-                    // 可选，用于代码签名
-                    // certificateFile: "路径/to/cert.pfx",
-                    // certificatePassword: process.env.CERT_PASS,
-                },
-                updater: {
-                    // 可选，支持通过 electron-updater 实现自动更新
-                    // url: "https://your-cdn.com/updates",
-                    // publisherName: "你的公司名",
-                },
+                // codesigning: {
+                //     // 可选，用于代码签名
+                //     // certificateFile: "路径/to/cert.pfx",
+                //     // certificatePassword: process.env.CERT_PASS,
+                // },
+                // updater: {
+                //     // 可选，支持通过 electron-updater 实现自动更新
+                //     // url: "https://your-cdn.com/updates",
+                //     // publisherName: "你的公司名",
+                // },
                 getAdditionalConfig: () => ({
                     // 自定义输出文件名
-                    artifactName: '${productName}Setup${version}.${ext}',
+                    // artifactName: '${productName}Setup${version}.${ext}',
                     // 启用一键安装
                     oneClick: false,
                     // 为全局安装（所有用户）
